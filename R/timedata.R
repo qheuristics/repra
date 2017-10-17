@@ -123,6 +123,7 @@ format_timedata <- function(data, levels = NULL, scenario = NULL, day.steps = 24
   data3$Area <- as.character(data3$Area)
   
   # Sum across levels of aggregation
+  class(data3) <- "data.table"
   cols.temp <- paste(c(scenario, "Level", "Area", "Time", "Type"), collapse = ",")
   data4 <- data3[, list(Value = sum(Value)), by = cols.temp]
   
